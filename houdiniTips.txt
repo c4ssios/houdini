@@ -12,6 +12,8 @@ Remove exterior pieces :
 - Compile_begin node
 - Foreach_begin node
 - Switch node + Null node connected into the Switch node : Select input : if(nprimsgroup(-1, "outside") != 0, 1, 0)
+	=> click on the gear icon and "add Spare Input"
+	=> set spare input to : corresponding foreach_begin node (ex : /obj/geo1/foreach_begin1)
 - Foreach_end node : Piece Attribute => name
 - Compile_end node
 
