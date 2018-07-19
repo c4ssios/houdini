@@ -12,7 +12,7 @@ Remove exterior pieces :
 - Compile_begin node
 - Foreach_begin node
 - Switch node + Null node connected into the Switch node : Select input : if(nprimsgroup(-1, "outside") != 0, 1, 0)
-- Foreach_end node
+- Foreach_end node : Piece Attribute => name
 - Compile_end node
 
 ######################################
