@@ -42,3 +42,15 @@ Random objects in a copy node
 
 - Copy to Points node :
 	in Stamp Tab, Attribute Stamps : rnd_index
+
+
+########################################
+
+Random Scale on Copy Stamp :
+
+- Copy Node :
+	Stamp Inputs : ON
+	Variables : randScale (or any attribute name), Value : fit01(rand($PT), .8, 1.2)
+	
+- Transform (left input of Copy Node) :
+	Uniform Scale : stamp("../copy1", "randScale", 1)
