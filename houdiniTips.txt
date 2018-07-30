@@ -54,3 +54,15 @@ Random Scale on Copy Stamp :
 	
 - Transform (left input of Copy Node) :
 	Uniform Scale : stamp("../copy1", "randScale", 1)
+	
+
+#############################################
+
+Rigid Body Simulation Kill objetcs outside a group :
+
+in the AutoDOPNetwork :
+- add a Multisolver node
+- add a SOPsolver
+- connect SOPsolver and RigidBodySolver in the purple right inputs of the MultiSolver
+- Connect the merge node(the one after RBD Packed Objects) in teh left input of MultiSolver node
+
