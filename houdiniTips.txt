@@ -55,6 +55,13 @@ Random Scale on Copy Stamp :
 - Transform (left input of Copy Node) :
 	Uniform Scale : stamp("../copy1", "randScale", 1)
 	
+OR
+- Add attribwrangle on right input of the copy node just after the points (from a geometry for example):
+	=> @pscale = fit01(rand(@ptnum), .3, 1) ;
+
+- in the Copy Node, under Attribute Tab:
+	=> "Set" in "Point" (top left corner) : pscale
+	
 
 #############################################
 
