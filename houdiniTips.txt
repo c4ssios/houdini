@@ -156,4 +156,40 @@ in the AutoDOPNetwork :
 
 Apply Disp Map to Points :
 
+in a PointVOP :
+  - importVertexAttributes :
+    - input : first input
+    - attribute : uv
+
+  out to:
+  UVPosition => uv input
+
+  out to:
+  Texture => uv input
+
+  out to:
+  Luminance => rgb
+
+  out to:
+  SubstractConstant => val
+  - substract : 0.5
+
+  out to:
+  Fit => val
+  - source min : -1
+  - source max : 1
+  - destination max : "to adjust" = gain
+
+  out to:
+  DisplaceAlongNormal => amount
+
+  dispP out to:
+  GeometryVOPOutput => P
+
+  GeometryVOPGlobal:
+  - P => DisplaceAlongNormal : P
+
+
+  
+
 
