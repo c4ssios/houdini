@@ -73,3 +73,87 @@ in the AutoDOPNetwork :
 - connect SOPsolver and RigidBodySolver in the purple right inputs of the MultiSolver
 - Connect the merge node(the one after RBD Packed Objects) in teh left input of MultiSolver node
 
+###############################################
+
+Apply Disp Map to Points :
+
+Remove small pieces :
+
+- Measure node : type => volume
+- Blast node :  Group => @volume<0.05
+
+#####################################
+
+Remove exterior pieces :
+
+=> after Voronoi Fracture
+
+- Compile_begin node
+- Foreach_begin node
+- Switch node + Null node connected into the Switch node : Select input : if(nprimsgroup(-1, "outside") != 0, 1, 0)
+	=> click on the gear icon and "add Spare Input"
+	=> set spare input to : corresponding foreach_begin node (ex : /obj/geo1/foreach_begin1)
+- Foreach_end node : Piece Attribute => name
+- Compile_end node
+
+######################################
+
+To export multiple objects as ABC from packed primitives
+
+- Assemble node : Create Packed Geometry ON
+- in the Alembic OUT node : 
+	in Hierarchy Tab, Partition Mode => Use Attribute value
+	in Hierarchy Tab, Partition Attribute => "name"
+	in Geometry Tab, Packed Transform => Transform Geometry
+
+
+#######################################a
+
+Random objects in a copy node
+
+- X numbers of objects connected to a Switch node.
+- Switch node (connected to Copy node left input):
+	=> Select Input : stamp("../copy1","rnd_index",0)
+
+- Grid Node
+- Attribute Wrangle (connected to Copy node right input) : 
+	VEXpression : i@rnd_index = int(fit01(rand(@ptnum),0,3));
+
+- Copy to Points node :
+	in Stamp Tab, Attribute Stamps : rnd_index
+
+
+########################################
+
+Random Scale on Copy Stamp :
+
+- Copy Node :
+	Stamp Inputs : ON
+	Variables : randScale (or any attribute name), Value : fit01(rand($PT), .8, 1.2)
+	
+- Transform (left input of Copy Node) :
+	Uniform Scale : stamp("../copy1", "randScale", 1)
+	
+OR
+- Add attribwrangle on right input of the copy node just after the points (from a geometry for example):
+	=> @pscale = fit01(rand(@ptnum), .3, 1) ;
+
+- in the Copy Node, under Attribute Tab:
+	=> "Set" in "Point" (top left corner) : pscale
+	
+
+#############################################
+
+Rigid Body Simulation Kill objetcs outside a group :
+
+in the AutoDOPNetwork :
+- add a Multisolver node
+- add a SOPsolver
+- connect SOPsolver and RigidBodySolver in the purple right inputs of the MultiSolver
+- Connect the merge node(the one after RBD Packed Objects) in teh left input of MultiSolver node
+
+###############################################
+
+Apply Disp Map to Points :
+
+
