@@ -188,6 +188,33 @@ in a PointVOP :
 
   GeometryVOPGlobal:
   - P => DisplaceAlongNormal : P
+  
+  ####################################################
+  Convert import Alembic transform matrix :
+  
+  - alembic file node
+  - attribute promote : 
+  	- originalName : path
+	- originalClasse : Primitive
+	- newClass : Point
+	- deleteOriginal : ON
+	
+- attribwrangle :
+	- VEXpression :
+
+	matrix pft = primintrinsic(0,'packedfulltransform',@ptnum);
+	matrix3 rotandscale = matrix3(pft);
+	//3@b = rotandscale;
+
+	vector vsx = set(getcomp(pft,0,0), getcomp(pft,0,1), getcomp(pft,0,2));
+	vector vsy = set(getcomp(pft,1,0), getcomp(pft,1,1), getcomp(pft,1,2));
+	vector vsz = set(getcomp(pft,2,0), getcomp(pft,2,1), getcomp(pft,2,2));
+	vector test = set(length(vsx), length(vsy), length(vsz));
+
+	v@pscale = test;
+	@orient = quaternion(matrix3(pft));
+
+- CopyToPoint
 
 
   
