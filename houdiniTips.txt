@@ -75,8 +75,6 @@ in the AutoDOPNetwork :
 
 ###############################################
 
-Apply Disp Map to Points :
-
 Remove small pieces :
 
 - Measure node : type => volume
