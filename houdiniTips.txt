@@ -133,7 +133,7 @@ in a PointVOP :
 	vector vsz = set(getcomp(pft,2,0), getcomp(pft,2,1), getcomp(pft,2,2));
 	vector test = set(length(vsx), length(vsy), length(vsz));
 
-	v@pscale = test;
+	v@scale = test;
 	@orient = quaternion(matrix3(pft));
 
 - CopyToPoint
