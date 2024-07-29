@@ -139,6 +139,12 @@ in a PointVOP :
 - CopyToPoint
 
 
+##########################################################
+
+Get camera position :
+
+vector camPos = cracktransform(0,0,0,{0,0,0},optransform(chs("parm_cam_obj")));
+
   
 
 
