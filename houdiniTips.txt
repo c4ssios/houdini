@@ -145,6 +145,11 @@ Get camera position :
 
 vector camPos = cracktransform(0,0,0,{0,0,0},optransform(chs("parm_cam_obj")));
 
+#############################################################
+
+change data type to UVs :
+setattribtypeinfo(0, 'vertex', 'nameOfYourAttribute', 'texturecoord');
+
   
 
 
